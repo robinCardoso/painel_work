@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login - Electron App</title>
+    <!-- favicon / ícone da aplicação -->
+    <link rel="icon" href="./assets/icon.ico" />
+    <!-- referência ao CSS externo -->
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="card" role="main" aria-labelledby="loginTitle">
+            <div class="logo">
+                <img id="logoImg" src="./assets/logo_empresa.png" alt="Logo da empresa"
+                    onerror="this.onerror=null; this.src='./assets/icon.ico';" />
+                <div>
+                    <h1 id="loginTitle">Entrar no Sistema</h1>
+                    <p class="lead">Acesse sua conta usando email e senha.</p>
+                </div>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <div class="field">
+                    <label for="email" style="display:none">Email</label>
+                    <input id="email" name="email" type="email" placeholder="seu@exemplo.com" required />
+                </div>
+
+                <div class="field">
+                    <label for="senha" style="display:none">Senha</label>
+                    <input id="senha" name="senha" type="password" placeholder="Senha" required minlength="4" />
+                </div>
+
+                <div class="error" id="errorBox" role="alert"></div>
+
+                <div class="actions">
+                    <a href="#" id="recover" class="ghost">Recuperar senha</a>
+                    <button type="submit" class="primary">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- referencia ao script externo -->
+    <script src="./scripts/login.js"></script>
+</body>
+
+</html>

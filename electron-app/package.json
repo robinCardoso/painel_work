@@ -1,0 +1,52 @@
+{
+  "name": "electron-app",
+  "version": "1.0.0",
+  "description": "Projeto inicial Electron",
+  "main": "main.js",
+  "author": "Seu Nome <voce@exemplo.com>",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "clean": "node ./scripts/clean.js",
+    "dist": "npm run clean && electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.0.0",
+    "find-process": "^1.4.7",
+    "tree-kill": "^1.2.2"
+  },
+  "build": {
+    "appId": "com.suaempresa.electronapp",
+    "productName": "Electron App",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "styles.css",
+      "scripts/login.js",
+      "pages/",
+      "config.txt",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "assets",
+        "to": "assets"
+      }
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
