@@ -1,15 +1,25 @@
+:root {
+  /* paleta: amarelo, branco, preto */
+  --accent: #f59e0b;         /* amarelo */
+  --bg: #ffffff;             /* branco */
+  --text: #000000;           /* preto */
+  --muted: rgba(0,0,0,0.55);
+  --border: rgba(0,0,0,0.08);
+  --shadow: rgba(0,0,0,0.06);
+}
+
 .admin-root {
   display: flex;
   min-height: 100vh;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: #0f172a;
+  color: var(--text);
 }
 
 /* Sidebar */
 .admin-sidebar {
-  width: 220px; /* reduzido de 260px para 220px */
-  background: linear-gradient(180deg,#ffffff,#fbfdff);
-  border-right: 1px solid rgba(15,23,42,0.04);
+  width: 280px;
+  background: linear-gradient(180deg, var(--bg), #fff);
+  border-right: 1px solid var(--border);
   padding: 8px;
   box-sizing: border-box;
   transition: width 200ms ease;
@@ -17,7 +27,7 @@
   flex-direction: column;
   overflow-x: hidden; /* Impede a barra de rolagem horizontal */
 }
-.admin-root.collapsed .admin-sidebar { width: 56px; } /* ajustado de 64px */
+.admin-root.collapsed .admin-sidebar { width: 72px; } /* ajustado para 72px */
 
 .sidebar-top {
   display: flex;
@@ -46,51 +56,74 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px;           /* reduzido de 10px para 8px para diminuir altura */
+  padding: 8px;
   color: #0f172a;
   text-decoration: none;
-  border-radius: 6px;     /* levemente menor */
-  width: 100%;
+  border-radius: 6px;
+  max-width: 100%;
+  box-sizing: border-box;
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 13px;       /* reduzido de 14px para 13px */
-  white-space: nowrap; /* Impede que o texto quebre linha */
+  font-size: 13px;
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* evita que texto largo empurre layout */
+  text-overflow: ellipsis;
+  min-height: 32px;
 }
-
-/* Hover */
-.sidebar-nav a:hover, .submenu-toggle:hover { background: rgba(37,99,235,0.06); }
+/* Hover (amarelo suave) */
+.sidebar-nav a:hover, .submenu-toggle:hover { background: rgba(245,158,11,0.06); }
 
 /* estilo para link ativo - menos expansivo e com transição */
 .sidebar-nav a.active {
-  background: #2563eb;
-  color: #fff;
+  background: var(--accent);
+  color: var(--text);
   font-weight: 600;
   padding-left: 10px;
   padding-right: 10px;
   box-shadow: none;
   transition: background 120ms ease, transform 80ms ease;
+  max-width: 100%;
 }
 
 /* quando colapsado, ocultar labels suavemente */
-.sidebar-nav .label { transition: opacity 150ms ease; }
+.sidebar-nav .label { 
+  transition: opacity 150ms ease; 
+  display: inline-block;
+  vertical-align: middle;
+  max-width: calc(100% - 40px); /* reserva espaço para ícone/caret */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .admin-root.collapsed .label { opacity: 0; pointer-events: none; }
 
 /* Submenu */
 .submenu { padding-left: 18px; margin-top: 6px; }
-.submenu li a { padding: 6px 10px; font-size: 13px; color: #475569; display: block; border-radius: 6px; }
-.submenu li a:hover { background: rgba(2,6,23,0.04); }
+.submenu li a {
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--muted);
+  display: block;
+  border-radius: 6px;
+}
+.submenu li a:hover { background: rgba(245,158,11,0.04); }
 
 /* Footer */
-.sidebar-footer { padding: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sidebar-footer { padding: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); }
 
 /* Content */
 .admin-content {
   flex: 1;
   padding: 20px;
-  background: linear-gradient(180deg,#f0f4ff 0%, #f7fafc 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+}
+
+/* caixas e sombras padronizadas para o tema */
+.admin-content > section > div,
+.admin-content .card {
+  background: var(--bg);
+  box-shadow: 0 6px 18px var(--shadow);
+  color: var(--text);
 }
 
 /* Responsive */
