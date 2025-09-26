@@ -13,7 +13,7 @@ export default function Header(): JSX.Element {
       <h2 style={{ margin: 0, fontSize: 18, color: '#0f172a' }}>Painel</h2>
       <nav>
         <Link to="/" style={{ marginRight: 12, textDecoration: 'none', color: '#2563eb', fontWeight: 600 }}>Login</Link>
-        <Link to="/home" style={{ textDecoration: 'none', color: '#475569' }}>Home</Link>
+        <Link to="/admin/index" style={{ textDecoration: 'none', color: '#475569' }}>Admin</Link>
       </nav>
     </header>
   );

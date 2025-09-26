@@ -1,0 +1,101 @@
+.admin-root {
+  display: flex;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #0f172a;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 220px; /* reduzido de 260px para 220px */
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  border-right: 1px solid rgba(15,23,42,0.04);
+  padding: 8px;
+  box-sizing: border-box;
+  transition: width 200ms ease;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Impede a barra de rolagem horizontal */
+}
+.admin-root.collapsed .admin-sidebar { width: 56px; } /* ajustado de 64px */
+
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 4px;
+}
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+  padding-left: 8px;
+}
+.collapse-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px;
+}
+
+/* Nav */
+.sidebar-nav { margin-top: 12px; flex: 1; overflow: auto; }
+.sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+.sidebar-nav li { margin-bottom: 4px; }
+.sidebar-nav a, .submenu-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;           /* reduzido de 10px para 8px para diminuir altura */
+  color: #0f172a;
+  text-decoration: none;
+  border-radius: 6px;     /* levemente menor */
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;       /* reduzido de 14px para 13px */
+  white-space: nowrap; /* Impede que o texto quebre linha */
+  overflow: hidden;
+  text-overflow: ellipsis; /* evita que texto largo empurre layout */
+}
+
+/* Hover */
+.sidebar-nav a:hover, .submenu-toggle:hover { background: rgba(37,99,235,0.06); }
+
+/* estilo para link ativo - menos expansivo e com transição */
+.sidebar-nav a.active {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: none;
+  transition: background 120ms ease, transform 80ms ease;
+}
+
+/* quando colapsado, ocultar labels suavemente */
+.sidebar-nav .label { transition: opacity 150ms ease; }
+.admin-root.collapsed .label { opacity: 0; pointer-events: none; }
+
+/* Submenu */
+.submenu { padding-left: 18px; margin-top: 6px; }
+.submenu li a { padding: 6px 10px; font-size: 13px; color: #475569; display: block; border-radius: 6px; }
+.submenu li a:hover { background: rgba(2,6,23,0.04); }
+
+/* Footer */
+.sidebar-footer { padding: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Content */
+.admin-content {
+  flex: 1;
+  padding: 20px;
+  background: linear-gradient(180deg,#f0f4ff 0%, #f7fafc 100%);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .admin-sidebar { position: absolute; z-index: 20; height: 100vh; transform: translateX(-100%); }
+  .admin-root.open .admin-sidebar { transform: translateX(0); }
+  .admin-content { padding: 12px; }
+}
