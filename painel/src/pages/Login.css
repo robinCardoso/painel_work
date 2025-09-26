@@ -1,0 +1,115 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #e6eefc, #f8fafc);
+  padding: 24px;
+}
+
+.login-form {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  transition: transform 0.18s ease;
+  border: 1px solid rgba(2,6,23,0.04);
+}
+
+.login-logo {
+  width: 96px;
+  height: auto;
+  margin: 0 auto 14px;
+  display: block;
+}
+
+.login-title {
+  font-size: 22px;
+  margin: 6px 0 8px;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.login-subtitle {
+  font-size: 13px;
+  margin: 0 0 18px;
+  color: #64748b;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  border: 1px solid #e6eef6;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 6px 16px rgba(37,99,235,0.08);
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.18s ease, transform 0.08s ease;
+}
+
+.login-button:hover:not([disabled]) {
+  background-color: #1e4fd8;
+  transform: translateY(-1px);
+}
+
+.login-button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-link {
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* mensagem de erro */
+.login-error {
+  color: #b91c1c;
+  background: #fff1f2;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+/* animação de erro */
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+.shake {
+  animation: shake 360ms ease-in-out;
+}
